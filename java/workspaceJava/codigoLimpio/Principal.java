@@ -11,8 +11,7 @@ void guardarUsuario(Usuario usuario){
 
 }
 
-void borrarUsuario (String nombre)
-{
+void borrarUsuario (String nombre){
     //TODO borrar el usuario
 }
     
