@@ -1,0 +1,12 @@
+Cuanto suman los numeros del 0 al 20
+
+X=3
+return = 0+1+2+3=6
+
+int sumar(int x) {
+
+}
+
+
+O(n)
+O(n-x)
