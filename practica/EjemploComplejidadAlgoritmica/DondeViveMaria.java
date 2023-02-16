@@ -7,7 +7,7 @@ public class DondeViveMaria {
                 s1+=j;
             }
 
-            int s2=0;s
+            int s2=0;
             for(int k=i+1;i<=totalCasas; k++) {
                 s2+=k;
             }
