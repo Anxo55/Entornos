@@ -10,3 +10,4 @@ int sumar(int x) {
 
 O(n)
 O(n-x)
+O(n*n-x)=O(

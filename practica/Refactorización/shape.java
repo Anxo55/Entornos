@@ -1,27 +1,46 @@
-public class shape {
-
-public static final int SQUARE = 1, int CIRCLE = 2, int RIGHT_TRIANGLE = 3;
+abstract public class Shape {
+    public String color;
+    public void colorDefecto() {
+        color = "negro";
+    }
    
-   private int shapeType;
-   private double size;
-
-   public Shape(int shapeType, double size) {
-       this.shapeType = shapeType;
-       this.size = size;
-   }
-
-   // ... other methods ...
-   public double area() {
-       switch (shapeType) {
-           case SQUARE:
-               return size * size;
-           case CIRCLE:
-               return Math.PI * size * size / 4.0;
-           case RIGHT_TRIANGLE:
-               return size * size / 2.0;
-       }
-       return 0;
-   }
-
-    
-}
+    public static void main(String[] arg) {
+        Square cuadrado = new Square(20);
+        System.out.println (cuadrado.area() );
+    }
+ }
+ 
+ class Circle extends Shape{
+    public double radio;
+    public double area() {
+        return Math.PI * radio * radio;
+    }
+    public Circle(double radio) {
+        this.radio = radio;
+    }
+   
+ }
+ 
+ class Square extends Shape{
+    public double lado;
+    public double area() {
+        return lado * lado;
+    }
+    public Square(double lado) {
+        this.lado = lado;
+    }
+   
+ }
+ 
+ class RightTriangle extends Shape{
+    public double base;
+    private double altura;
+    public double area() {
+        return base * altura / 2;
+    }
+    public RightTriangle(double base, double altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+   
+ }
