@@ -54,5 +54,10 @@ class Pendulo{
 		double anguloEnRadianes = Math.toRadians(anguloEnGrados);
 		return -(gravedad/longitud) * Math.sin(anguloEnRadianes);
 	}
+
+     public static void main(String[] args) {
+          Pendulo p = new Pendulo(5);
+          System.out.println(p.getAceleracionAngular(9.8f, 2));
+     }
 }
 
