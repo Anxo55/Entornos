@@ -1,8 +1,8 @@
 
-public class User {
+public class UserCreator {
 	public String name;
 	private final static float LIBRARY_COST = 10;
-	public User(String name) {
+	public UserCreator(String name) {
 		this.name=name;
 	}
 	public float costOfLibrary() {
@@ -10,7 +10,7 @@ public class User {
 	}
 }
 
-class Teacher extends User{
+class Teacher extends UserCreator{
 	private final static float LIBRARY_COST = 2;
 	public Teacher(String name) {
 		super(name);
@@ -20,7 +20,7 @@ class Teacher extends User{
 	}
 }
 
-class HeadMaster extends User{
+class HeadMaster extends UserCreator{
 	private final static float LIBRARY_COST = 0;
 	public HeadMaster(String name) {
 		super(name);
