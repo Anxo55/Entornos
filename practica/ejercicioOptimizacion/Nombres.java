@@ -19,7 +19,7 @@ public class Nombres {
      */
     // String[] lista = { "Angel", "Pepe", "Bea" };
     ArrayList<String> lista = new ArrayList<String>(Arrays.asList("Angel", "Pepe", "Bea"));
-
+    
 
     /**
      * Añade un nuevo elemento al array de nombres
