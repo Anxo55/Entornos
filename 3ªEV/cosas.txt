@@ -1,0 +1,10 @@
+private int edad = 12 {edad>1 y edad <100}
+setEdad(int nuevaEdad){
+	if(nuevaEdad>1 and nuevaEdad<100)
+		edad = nuevaEdad
+	elsae
+		Lanzo 
+	
+
+dni: int[*] {uniq} {ordered}
+calificaciones: int[3]
