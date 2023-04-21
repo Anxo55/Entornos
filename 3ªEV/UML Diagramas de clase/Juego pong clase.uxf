@@ -1,45 +1,57 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>90</x><y>90</y><w>210</w><h>210</h></coordinates><panel_attributes>Raquet
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>90</x><y>40</y><w>210</w><h>270</h></coordinates><panel_attributes>Raquet
 --
--x:number
--y:number=h/2
--sx:integer=10
--sy:integer=60
+#x:number
+#y:number=h/2
+#sx:integer=10
+#sy:integer=100
 -vy:number=0
 -c:Color=White
+_#WALL_SEPARATION:integer=50{readonly}_
++points:integer=0
 --
 +constructor():void
 +draw():void
-+updatePoaition():void
-+checkCollisionWall():boolean
++updatePosition():void
+limitOutScreen():boolean
++moveUp():void
 +moveDown():void
++stop():void
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>360</y><w>280</w><h>250</h></coordinates><panel_attributes>Ball
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>280</y><w>280</w><h>350</h></coordinates><panel_attributes>Ball
 --
--x:number=w/2
--y:number=h/2
--s:integer=10
-vx.number=0
-vy:number=0
+-x:number=width/2
+-y:number=height/2
+-w:integer=20
+vx.number=3
+vy:number=3
 c:Color=White
 
 --
++constructot():void
 +draw():void
 +updatePosition():void
-+checkCollisionRaquet(Raquet(raquet:Raquet))
-+checkCollisionWall()
+-hasCollisionLeftWall():boolean
+-hasCollisionRIghtWall():boolean
+-hasCollisionTopWall():boolean
+-hasCollisionDownWall():boolean
++controlCollisionTopBotomWall():void
++controlCollisionTopBotomWall():void
++controlCollisionLeftWall():void
++controlCollisionRightWall():void
+
++controlCollisionLeftRaquet():void
++controlCollisionRightRaquet():void
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>120</y><w>210</w><h>240</h></coordinates><panel_attributes>Scene
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>20</y><w>210</w><h>240</h></coordinates><panel_attributes>Scene
 --
-+h:integer=640
-+w:integer=640
++height:integer=640
++width:integer=640
 +ball:Ball
-+raquet1:Raquet
-+raquet2:Raquet
-+pointRaquet1:byte
-+pointRaquet2:byte
++raquetI:Raquet
++raquetD:Raquet
 --
 +setup():void
 +draw():void
@@ -47,4 +59,14 @@ c:Color=White
 +kayReleased():oid
 +reset():void
 
-</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>370</y><w>210</w><h>90</h></coordinates><panel_attributes>RaquetaI
+--
+
+--
++constructor():void
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>370</y><w>210</w><h>90</h></coordinates><panel_attributes>RaquetaD
+--
+
+--
++constructor():void
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>300</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>330</y><w>120</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;100;40</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>330</y><w>90</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;40;70;10</additional_attributes></element></diagram>
