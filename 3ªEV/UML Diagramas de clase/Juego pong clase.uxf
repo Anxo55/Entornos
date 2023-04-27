@@ -1,9 +1,10 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>90</x><y>40</y><w>210</w><h>270</h></coordinates><panel_attributes>Raquet
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>50</x><y>20</y><w>210</w><h>270</h></coordinates><panel_attributes>Raquet
+{abstract}
 --
 #x:number
 #y:number=h/2
-#sx:integer=10
-#sy:integer=100
+#w:integer=10
+#h:integer=100
 -vy:number=0
 -c:Color=White
 _#WALL_SEPARATION:integer=50{readonly}_
@@ -69,4 +70,4 @@ c:Color=White
 
 --
 +constructor():void
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>300</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>330</y><w>120</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;100;40</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>330</y><w>90</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;40;70;10</additional_attributes></element></diagram>
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>280</y><w>70</w><h>80</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;50;60</additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>330</y><w>120</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;100;40</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>330</y><w>90</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;40;70;10</additional_attributes></element></diagram>
