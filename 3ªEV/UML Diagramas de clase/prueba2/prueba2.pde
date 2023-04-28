@@ -19,6 +19,8 @@ abstract class Raquet{
   }
   
   public void limitOutScreen(){
+    if(y<0) y=0;
+    if(y+h > height) y = height - h;
   }
   
   public void moveUp(){
@@ -79,22 +81,35 @@ public void setup() {
   stroke(255,255,255);
   
   raquetL = new RaquetL();
+  raquetR = new RaquetR();
   
 }
 
 public void draw(){
   background(0);
   raquetL.draw();
+  raquetR.draw();
   
   raquetL.updatePosition();
+  raquetR.updatePosition();
+  
+  raquetL.limitOutScreen();
+  raquetR.limitOutScreen();
 }
 
 public void keyPressed(){
   if(key == 'w') raquetL.moveUp();
   if(key == 's') raquetL.moveDown();
+  
+  if(keyCode == UP) raquetR.moveUp();
+  if(keyCode == DOWN) raquetR.moveDown();
+  
+  System.out.println(keyCode);
 }
+
 public void keyReleased(){
   if(key == 'w' || key == 's') raquetL.stop();
+  if(keyCode == UP || keyCode == DOWN) raquetR.stop();
   
 }
 public void reset(){
