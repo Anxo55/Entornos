@@ -55,8 +55,13 @@ class Ball{
   private float vy = 3;
   //private Color c = Color.WHITE;
   public void Ball(){  }
-  public void draw() {}
-  public void updatePosition() {}
+  public void draw() {
+    ellipse(x, y, w, w);
+  }
+  public void updatePosition() {
+    x += vx;
+    y += vy;
+  }
   private boolean hasCollionLeftWall() { return false; }
   private boolean hasCollionRightWall() { return false; }
   private boolean hasCollionTopWall() { return false; }
@@ -89,6 +94,7 @@ public void draw(){
   background(0);
   raquetL.draw();
   raquetR.draw();
+  ball.draw();
   
   raquetL.updatePosition();
   raquetR.updatePosition();
