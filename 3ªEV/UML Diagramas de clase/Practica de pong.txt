@@ -1,0 +1,7 @@
+[] Incrementar la velocidad cuando tocamos en las raquetas
+
+[] que no solo tengamos una pelota, que podamos tener varias
+
+[] Cuando hagamos el reset la pelota vaya en una direccion random
+
+[] pulsando la tecla n se añada una nueva pelota
