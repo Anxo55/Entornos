@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 import java.awt.Color;
 
 abstract class Raquet{
@@ -58,17 +60,39 @@ class Ball{
   public void draw() {
     square(x,y, w);
   }
+  
   public void reset()
   {
     x=width/2;
     y=height/2;
     
-    vx=random(-10, 10);
-    vy=random(-10,10);
+    vx=3;
+    vy=3;
+    
+    float M;
+    float N;
+    int dir = (int)Math.round(Math.random());  //0   1
+    if(dir == 1){
+      M=-30;
+      N=+30;
+    }else{
+      M=180-30;
+      N=180+30;
+    }
+    
+    
+    
+    float anguloGrados = (float)(Math.random()*(N-M+1)+M);
+    double anguloRadianes = (anguloGrados * Math.PI)/180;
+    vx = (float)Math.cos(anguloRadianes) * 5;
+    vy = (float)Math.sin(anguloRadianes) * 5;
   }
+  
+  
   public void updatePosition() {
-    x = x + vx;
-    y = y + vy;
+
+    x += vx;
+    y += vy;
   }
   private boolean hasCollionLeftWall() { 
     return x<0;
@@ -102,32 +126,43 @@ class Ball{
     return false;
   }
   
-  public void controlCollisionLeftRaquet(RaquetL r) {
+  public void controlCollisionLeftRaquet(Raquet r) {
+   
     if(x <= r.x+r.w && x+w >r.x ){
       if(y+w > r.y  &&  y < r.y+r.h ){
+         rebote.play();
         vx *= -1;
-        vy *= 1;
         x=r.x+r.w;
+        // incremento dificulta
+        vx = vx * 1.1;
+        vy = vy * 1.1; 
       }
     }
     
   }
-  public void controlCollisionRightRaquet(RaquetR r) {
+  public void controlCollisionRightRaquet(Raquet r) {
+    
     if(x+w >= r.x && x < r.x+r.w){
       if(y+w > r.y  &&  y < r.y+r.h ){
+        rebote.play();
         vx *= -1;
-        vy *= 1;
         x=r.x-w;
+         // incremento dificulta
+        vx = vx * 1.1;
+        vy = vy * 1.1; 
       }
     }
   }
 }
 
+private float previousMilli=millis();
 
 
-Ball ball;
+ArrayList<Ball> balls;
+
 RaquetL raquetL;
 RaquetR raquetR;
+SoundFile rebote;
 
 public void setup() {
   size(640,480);
@@ -136,7 +171,8 @@ public void setup() {
   textSize(30);
   raquetL = new RaquetL();
   raquetR = new RaquetR();
-  ball = new Ball();
+  balls = new ArrayList<Ball>();
+  rebote = new SoundFile(this, "rebote.mp3");
   
 }
 
@@ -144,7 +180,7 @@ public void draw(){
   background(0);
   raquetL.draw();
   raquetR.draw();
-  ball.draw();
+  for(Ball ball : balls)  ball.draw();
   
   rect(width/2,0, 3,height);
   text(raquetL.points, 40,40);
@@ -153,24 +189,32 @@ public void draw(){
   
   raquetL.updatePosition();
   raquetR.updatePosition();
-  ball.updatePosition();
+  for(Ball ball : balls)  ball.updatePosition();
   
   raquetL.limitOutScreen();
   raquetR.limitOutScreen();
   
-  ball.controlCollisionTopBottomWall();
+  for(Ball ball : balls)  ball.controlCollisionTopBottomWall();
   
-  if(ball.controlCollisionLeftWall()){
-    raquetR.points++;
-    reset();
-  }
-  if(ball.controlCollisionRightWall()){
-    raquetL.points++;
-    reset();
-  }
+  for(Ball ball : balls)  {
+    if(ball.controlCollisionLeftWall()){
+      raquetR.points++;
+      //reset();
+      balls.remove(ball);
+      break;
+    }
+    if(ball.controlCollisionRightWall()){
+      raquetL.points++;
+      //reset();
+      balls.remove(ball);
+      break;
+    }
+ 
   
-  ball.controlCollisionLeftRaquet(raquetL);
-  ball.controlCollisionRightRaquet(raquetR);
+    ball.controlCollisionLeftRaquet(raquetL);
+    ball.controlCollisionRightRaquet(raquetR);
+  
+  }
 }
 
 public void keyPressed(){
@@ -180,6 +224,7 @@ public void keyPressed(){
   if(keyCode == UP) raquetR.moveUp();
   if(keyCode == DOWN) raquetR.moveDown();
   
+  if(key == 'n') balls.add(new Ball());
   
   System.out.println(keyCode);
 }
@@ -190,6 +235,6 @@ public void keyReleased(){
 }
 public void reset(){
   
- ball.reset();
+  for(Ball ball : balls)  ball.reset();
   
 }
