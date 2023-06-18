@@ -13,7 +13,7 @@ public class Ejemplo1 {
         }
         a += b;
         return a;
- 
+    
     }
 
     (String[] args) {
@@ -22,3 +22,4 @@ public class Ejemplo1 {
         System.out.println(algoritmoX(0));
     }
  }
+
